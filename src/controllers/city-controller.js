@@ -85,3 +85,10 @@ const fetchCity = async (req, res) => {
         })
     }
 }
+
+module.exports = {
+    createCity,
+    destroyCity,
+    updateCity,
+    fetchCity
+}
