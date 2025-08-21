@@ -7,14 +7,37 @@ class CityRepository{
             return city;
         }
         catch(error){
+            console.log("something went wrong");
             throw{error}
         }
     }
     async deleteCity (id) {
         try{
             await City.destroy({where: {id}});
+            return true;
         }
         catch(error){
+            console.log("something went wrong");
+            throw{error}
+        }
+    }
+    async updateCity(id,data){
+        try {
+           const city = await City.update(data,{
+            where : {id}
+           });
+           return city;
+        } catch (error) {
+             console.log("something went wrong");
+            throw{error}
+        }
+    }
+    async fetchCity(id){
+        try {
+            const city = await City.findByPk(id);
+            return city;
+        } catch (error) {
+             console.log("something went wrong");
             throw{error}
         }
     }
