@@ -23,10 +23,15 @@ class CityRepository{
     }
     async updateCity(id,data){
         try {
-           const city = await City.update(data,{
-            where : {id}
-           });
-           return city;
+        //    const city = await City.update(data,{
+        //     where : {id}
+        //    });
+        //    return city;
+        const city = await City.findByPk(id);
+        city.name = data.name;
+        await city.save();
+        return city;
+
         } catch (error) {
              console.log("something went wrong");
             throw{error}
