@@ -86,9 +86,31 @@ const fetchCity = async (req, res) => {
     }
 }
 
+const fetchAllCities = async (req, res) => {
+    try {
+        const response = await cityService.fetchAllCities(req.query);
+        return res.status(200).json({
+            data: response,
+            success: true,
+            message: "Successfully fetched all the cities",
+            error: {}
+        })
+    }
+    catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            data: {},
+            success: false,
+            message: "Something went wrong in the city controller",
+            error: error
+        })
+    }
+}   
+
 module.exports = {
     createCity,
     destroyCity,
     updateCity,
-    fetchCity
+    fetchCity,
+    fetchAllCities
 }
