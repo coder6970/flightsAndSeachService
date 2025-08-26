@@ -47,4 +47,4 @@ class CityRepository{
         }
     }
 }
-module.exports = CityRepository;
+module.exports = new CityRepository();
