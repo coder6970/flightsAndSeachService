@@ -1,6 +1,7 @@
 const {CityRepository} = require('../repository/index');
 
 class CityService {
+    // this constructor pattern not necessary we can directly use CityRepository object but it is considered a good practice to follow it 
     constructor() {
         this.cityRepository =  CityRepository;
     }
@@ -49,6 +50,16 @@ class CityService {
         try {
             const city = await this.cityRepository.fetchCity(id);
             return city;
+        } catch (error) {
+            console.log("something went wrong in the city service");
+            throw error;
+        }
+    }
+
+    async fetchCityAirports(id) {
+        try {
+            const airports = await this.cityRepository.fetchCityAirports(id);
+            return airports;
         } catch (error) {
             console.log("something went wrong in the city service");
             throw error;

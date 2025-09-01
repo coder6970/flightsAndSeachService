@@ -89,11 +89,32 @@ const updateCity = async (req, res) => {
 
 const fetchCity = async (req, res) => {
     try {
-        const response = await cityService.fetchCity(req.params.id,req.body);
+        const response = await cityService.fetchCity(req.params.id);
         return res.status(200).json({
             data: response,
             success: true,
             message: "Successfully fetched the city",
+            error: {}
+        })
+    }
+    catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            data: {},
+            success: false,
+            message: "Something went wrong in the city controller",
+            error: error
+        })
+    }
+}
+
+const fetchCityAirports = async (req, res) => {
+    try {
+        const response = await cityService.fetchCityAirports(req.params.id);
+        return res.status(200).json({
+            data: response,
+            success: true,
+            message: "Successfully fetched the all airports of the city",
             error: {}
         })
     }
@@ -135,5 +156,6 @@ module.exports = {
     destroyCity,
     updateCity,
     fetchCity,
-    fetchAllCities
+    fetchAllCities,
+    fetchCityAirports
 }

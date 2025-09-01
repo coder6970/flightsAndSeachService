@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const {port} = require("./config/serverconfig")
 const apiRoutes = require('./routes/index.js');
-const {City,Airport} = require ('./models/index.js');
+// const {City,Airport} = require ('./models/index.js');
 const db = require("./models/index.js");
 
 const setupAndStartServer = async () => {

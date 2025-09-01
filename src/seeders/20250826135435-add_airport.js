@@ -26,12 +26,6 @@ module.exports = {
             updatedAt : new Date()
           },
           {
-            name : "New Delhi Airtport",
-            city_id : 17,
-            createdAt : new Date(),
-            updatedAt : new Date()
-          },
-          {
             name : "Raja Bhoj Airtport",
             city_id : 18,
             createdAt : new Date(),
