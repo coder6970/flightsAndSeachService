@@ -1,7 +1,7 @@
 const {CityService} = require('../services/index');
 const cityService = new CityService();
 
-
+  
 const createCity = async (req, res) => {
     try {
         const city = await cityService.createCity(req.body);
@@ -9,6 +9,27 @@ const createCity = async (req, res) => {
             data: city,
             success: true,
             message: "Successfully created a city",
+            error: {}
+        })
+    }
+    catch (error) {
+        console.log("THE ERROR IS ",error);
+        return res.status(500).json({
+            data: {},
+            success: false,
+            message: "Something went wrong in the city controller",
+            error: error
+        })
+    }
+}
+
+const createCities = async (req, res) => {
+    try {
+        const city = await cityService.createCities(req.body);
+        return res.status(201).json({
+            data: city,
+            success: true,
+            message: "Successfully created multiple city",
             error: {}
         })
     }
@@ -34,7 +55,8 @@ const destroyCity = async (req, res) => {
         })
     }
     catch (error) {
-        console.log(error);
+         console.log(error);
+         
         return res.status(500).json({
             data: {},
             success: false,
@@ -109,6 +131,7 @@ const fetchAllCities = async (req, res) => {
 
 module.exports = {
     createCity,
+    createCities,
     destroyCity,
     updateCity,
     fetchCity,

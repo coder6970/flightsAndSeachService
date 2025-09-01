@@ -10,7 +10,17 @@ class CityService {
             const city = await this.cityRepository.createCity(data);
             return city;
         } catch (error) {
-            console.error("something went wrong in the city service");
+            console.log("something went wrong in the city service");
+            throw error;
+        }
+    }
+
+    async createCities(data){
+         try {
+            const response = await this.cityRepository.createCities(data);
+            return response;
+        } catch (error) {
+            console.log("something went wrong in the city service");
             throw error;
         }
     }
@@ -20,7 +30,7 @@ class CityService {
             const response = await this.cityRepository.deleteCity(id);
             return response;
         } catch (error) {
-            console.error("something went wrong in the city service");
+            console.log("something went wrong in the city service");
             throw error;
         }
     }
@@ -30,7 +40,7 @@ class CityService {
             const city = await this.cityRepository.updateCity(id, data);
             return city;
         } catch (error) {
-           console.error("something went wrong in the city service");
+           console.log("something went wrong in the city service");
             throw error;
         }
     }
@@ -40,7 +50,7 @@ class CityService {
             const city = await this.cityRepository.fetchCity(id);
             return city;
         } catch (error) {
-            console.error("something went wrong in the city service");
+            console.log("something went wrong in the city service");
             throw error;
         }
     }
@@ -50,7 +60,7 @@ class CityService {
             const cities = await this.cityRepository.fetchAllCities({name : filter.name});
             return cities;
         } catch (error) {
-            console.error("something went wrong in the city service");
+            console.log("something went wrong in the city service");
             throw error;
         }
     }
