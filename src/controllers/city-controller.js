@@ -1,10 +1,9 @@
 const {CityService} = require('../services/index');
 const cityService = new CityService();
 
-  
 const createCity = async (req, res) => {
     try {
-        const city = await cityService.createCity(req.body);
+        const city = await cityService.create(req.body);
         return res.status(201).json({
             data: city,
             success: true,
@@ -13,7 +12,7 @@ const createCity = async (req, res) => {
         })
     }
     catch (error) {
-        console.log("THE ERROR IS ",error);
+        console.log(error);
         return res.status(500).json({
             data: {},
             success: false,
@@ -46,7 +45,7 @@ const createCities = async (req, res) => {
 
 const destroyCity = async (req, res) => {
     try {
-        const response = await cityService.deleteCity(req.params.id);
+        const response = await cityService.destroy(req.params.id);
         return res.status(200).json({
             data: response,
             success: true,
@@ -68,7 +67,7 @@ const destroyCity = async (req, res) => {
 
 const updateCity = async (req, res) => {
     try {
-        const response = await cityService.updateCity(req.params.id,req.body);
+        const response = await cityService.update(req.params.id,req.body);
         return res.status(200).json({
             data: response,
             success: true,
@@ -89,7 +88,7 @@ const updateCity = async (req, res) => {
 
 const fetchCity = async (req, res) => {
     try {
-        const response = await cityService.fetchCity(req.params.id);
+        const response = await cityService.fetch(req.params.id);
         return res.status(200).json({
             data: response,
             success: true,
@@ -131,7 +130,7 @@ const fetchCityAirports = async (req, res) => {
 
 const fetchAllCities = async (req, res) => {
     try {
-        const response = await cityService.fetchAllCities(req.query);
+        const response = await cityService.fetchAll(req.query);
         return res.status(200).json({
             data: response,
             success: true,

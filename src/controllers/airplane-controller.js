@@ -1,14 +1,14 @@
-const {AirportService} = require('../services/index');
-const airportService = new AirportService();
+const  {AirplaneService} = require('../services/index');
+const airplaneService = new AirplaneService();
 
   
-const createAirport = async (req, res) => {
+const createAirplane = async (req, res) => {
     try {
-        const airport = await airportService.create(req.body);
+        const airpane = await airplaneService.create(req.body);
         return res.status(201).json({
-            data: airport,
+            data: airpane,
             success: true,
-            message: "Successfully created a airport",
+            message: "Successfully created a airplane",
             error: {}
         })
     }
@@ -17,20 +17,20 @@ const createAirport = async (req, res) => {
         return res.status(500).json({
             data: {},
             success: false,
-            message: "Something went wrong in the airport controller",
+            message: "Something went wrong in the airplane controller",
             error: error
         })
     }
 }
 
 
-const destroyAirport = async (req, res) => {
+const destroyAirplane = async (req, res) => {
     try {
-        const response = await airportService.destroy(req.params.id);
+        const response = await airplaneService.destroy(req.params.id);
         return res.status(200).json({
             data: response,
             success: true,
-            message: "Successfully deleted the airport",
+            message: "Successfully deleted the airplane",
             error: {}
         })
     }
@@ -40,19 +40,19 @@ const destroyAirport = async (req, res) => {
         return res.status(500).json({
             data: {},
             success: false,
-            message: "Something went wrong in the airport controller",
+            message: "Something went wrong in the airplane controller",
             error: error
         })
     }
 }
 
-const updateAirport = async (req, res) => {
+const updateAirplane = async (req, res) => {
     try {
-        const response = await airportService.update(req.params.id,req.body);
+        const response = await airplaneService.update(req.params.id,req.body);
         return res.status(200).json({
             data: response,
             success: true,
-            message: "Successfully updated the airport",
+            message: "Successfully updated the airplane",
             error: {}
         })
     }
@@ -61,19 +61,19 @@ const updateAirport = async (req, res) => {
         return res.status(500).json({
             data: {},
             success: false,
-            message: "Something went wrong in the airport controller",
+            message: "Something went wrong in the airplane controller",
             error: error
         })
     }
 }
 
-const fetchAirport = async (req, res) => {
+const fetchAirplane = async (req, res) => {
     try {
-        const response = await airportService.fetch(req.params.id);
+        const response = await airplaneService.fetch(req.params.id);
         return res.status(200).json({
             data: response,
             success: true,
-            message: "Successfully fetched the airport",
+            message: "Successfully fetched the airplane",
             error: {}
         })
     }
@@ -82,19 +82,19 @@ const fetchAirport = async (req, res) => {
         return res.status(500).json({
             data: {},
             success: false,
-            message: "Something went wrong in the airport controller",
+            message: "Something went wrong in the airplane controller",
             error: error
         })
     }
 }
 
-const fetchAllAirports = async (req, res) => {
+const fetchAllAirplanes = async (req, res) => {
     try {
-        const response = await airportService.fetchAll(req.query);
+        const response = await airplaneService.fetchAll(req.query);
         return res.status(200).json({
             data: response,
             success: true,
-            message: "Successfully fetched all the airports",
+            message: "Successfully fetched all the airplanes",
             error: {}
         })
     }
@@ -103,16 +103,16 @@ const fetchAllAirports = async (req, res) => {
         return res.status(500).json({
             data: {},
             success: false,
-            message: "Something went wrong in the airport controller",
+            message: "Something went wrong in the airplane controller",
             error: error
         })
     }
 }   
 
 module.exports = {
-    createAirport,
-    destroyAirport,
-    updateAirport,
-    fetchAirport,
-    fetchAllAirports
+   createAirplane,
+   destroyAirplane,
+   updateAirplane,
+   fetchAirplane,
+   fetchAllAirplanes
 }

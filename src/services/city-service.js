@@ -1,55 +1,17 @@
 const {CityRepository} = require('../repository/index');
-
-class CityService {
+const CrudService = require('./crudService')
+class CityService extends CrudService{
     // this constructor pattern not necessary we can directly use CityRepository object but it is considered a good practice to follow it 
     constructor() {
-        this.cityRepository =  CityRepository;
-    }
-
-    async createCity(data) {
-        try {
-            const city = await this.cityRepository.createCity(data);
-            return city;
-        } catch (error) {
-            console.log("something went wrong in the city service");
-            throw error;
-        }
+        const cityRepository = CityRepository;
+        super(cityRepository);
+        this.cityRepository = cityRepository
     }
 
     async createCities(data){
          try {
             const response = await this.cityRepository.createCities(data);
             return response;
-        } catch (error) {
-            console.log("something went wrong in the city service");
-            throw error;
-        }
-    }
-
-    async deleteCity(id) {
-        try {
-            const response = await this.cityRepository.deleteCity(id);
-            return response;
-        } catch (error) {
-            console.log("something went wrong in the city service");
-            throw error;
-        }
-    }
-
-    async updateCity(id, data) {
-        try {
-            const city = await this.cityRepository.updateCity(id, data);
-            return city;
-        } catch (error) {
-           console.log("something went wrong in the city service");
-            throw error;
-        }
-    }
-
-    async fetchCity(id) {
-        try {
-            const city = await this.cityRepository.fetchCity(id);
-            return city;
         } catch (error) {
             console.log("something went wrong in the city service");
             throw error;
@@ -66,9 +28,9 @@ class CityService {
         }
     }
 
-    async fetchAllCities(filter){
+    async fetchAll(filter){
         try {
-            const cities = await this.cityRepository.fetchAllCities({name : filter.name});
+            const cities = await this.cityRepository.fetchAll({name : filter.name});
             return cities;
         } catch (error) {
             console.log("something went wrong in the city service");
